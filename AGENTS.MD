@@ -36,6 +36,12 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 
 - GitHub broad reads: prefer shimmed `gh` / `gitcrawl gh` first. Raw `gh api search/* -f ...` needs `--method GET`; gitcrawl shim sanitizes this.
 - PR refs: use `gh pr view/diff`, not web search.
+- PR title: match repo style; default `type(scope): description`, imperative/lowercase/no period, <72 chars. No `!`/`BREAKING CHANGE:` without explicit confirmation.
+- PR body: value-first; explain what is now possible/fixed/changed, not file list. Diff is visible.
+- PR body size: small simple = 1-2 sentences; non-trivial = 3-5; large = selective design decisions + brief tests, ~100 lines target, 150 cap.
+- PR body sections: Summary when headings exist; Test Plan when verification non-obvious; Demo/Screenshots only for real evidence, never test output.
+- PR Test Plan: include commands/checks actually run, manual verification, and skipped checks with reason. Omit for trivial docs/config typo when verification is self-evident.
+- PR visuals: use diagram/table only when faster than prose; prose stays authoritative.
 - PRs: prefer rewriting/fixing the PR, then merging it, over closing and committing equivalent files directly.
 - Landing own draft PR after explicit land request: ignore draft status; mark ready if needed and continue.
 - `fix ci`: consent to pull, commit, push; fix/rerun/watch until CI green.
@@ -74,7 +80,11 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 - Branch changes require user consent.
 - Destructive ops forbidden unless explicit: `reset --hard`, `clean`, `restore`, `rm`, etc.
 - Commit helper on PATH: `committer` (bash). Prefer it; if repo has `./scripts/committer`, use that.
-- Commits: Conventional Commits (`feat|fix|refactor|build|ci|chore|docs|style|perf|test`).
+- Commit style: project convention > recent commits > Conventional Commits (`feat|fix|refactor|build|ci|chore|docs|style|perf|test`).
+- Commit subject: concise, imperative, why/value over file list. Ambiguous `feat`/`fix` => `fix`; reserve `feat` for new user capability.
+- Commit body: only when useful; explain motivation/tradeoffs/future-reader context.
+- Commit grouping: split obvious unrelated concerns, file-level only, 2-3 max; otherwise one commit.
+- Commit staging: specific files; avoid `git add -A` / `git add .`.
 - No repo-wide S/R scripts; keep edits small/reviewable.
 - If user types a command ("pull and push"), that's consent for that command.
 - No amend unless asked.
