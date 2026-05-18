@@ -4,6 +4,9 @@ summary: Timeline of guardrail helper changes mirrored from Sweetistics and rela
 
 # Changelog
 
+## 2026-05-18 — Linear Save Issue
+- Updated `linear` to call `save_issue` (upsert) for create/update; removed stale `create_issue` reference.
+
 ## 2026-05-18 — Browser Reattach Defaults
 - Updated `browser-use` to call the default mcporter `chrome-devtools` reattach target without a temporary config file.
 - Added browser-use mcporter config notes for diagnosing blank/isolated Chrome attachments and restoring the reattach config.

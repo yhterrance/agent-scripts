@@ -22,7 +22,7 @@ Use for Linear issue listing and creation. Routes through `mcporter` so the same
 ## Guardrails
 
 - Confirm `mcporter list linear --schema` matches the field names below before automating; Linear evolves its MCP surface.
-- Issue creation is durable and notifies subscribers. Ask for confirmation before `create_issue` unless the user already provided title + team in the same turn.
+- Issue creation is durable and notifies subscribers. Ask for confirmation before `save_issue` unless the user already provided title + team in the same turn.
 - Never print OAuth tokens or auth headers; mcporter handles them in the cache.
 
 ## Commands
@@ -40,10 +40,11 @@ mcporter call 'linear.list_issues(team: "PRD")'
 mcporter call 'linear.list_issues(query: "auth bug", limit: 10)'
 ```
 
-Create an issue:
+Create or update an issue (`save_issue` is an upsert — omit `id` to create, pass `id` to update; there is no `create_issue` tool):
 
 ```bash
-mcporter call 'linear.create_issue(team: "PRD", title: "Bug: login redirect loop", description: "Repro steps…")'
+mcporter call 'linear.save_issue(team: "PRD", title: "Bug: login redirect loop", description: "Repro steps…")'
+mcporter call 'linear.save_issue(id: "PRD-1236", description: "Updated repro…")'
 ```
 
 Structured output for piping into other tools:
