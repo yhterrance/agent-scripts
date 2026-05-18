@@ -46,7 +46,7 @@ tmux -S "$SOCKET" send-keys -t "$SESSION":1.1 -- "op item get '<Item>' --vault '
 ## Preferred: granular automation token (+ optional OTP)
 
 Store a granular npm token in 1Password (item field `token`), plus TOTP if required.
-For Peter's npm account, the 1Password item is `op://Private/Npmjs`.
+For Terrance's npm account, the 1Password item is `op://Private/Npmjs`.
 
 ```bash
 TOKEN_REF='op://Private/Npmjs/token'
@@ -77,7 +77,7 @@ env -u NPM_TOKEN -u NODE_AUTH_TOKEN npm whoami
 ## Fallback: `npm login` using op buffers (no echo)
 
 When password auth is unavoidable, avoid typing secrets by piping into tmux
-buffers and pasting. Peter's npm account is stored in the 1Password item
+buffers and pasting. Terrance's npm account is stored in the 1Password item
 `Npmjs` in the `Private` vault.
 
 ```bash

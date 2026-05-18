@@ -1,6 +1,6 @@
 ---
 name: "github-project-triage"
-description: "RepoBar GitHub queue triage: current project by default; steipete/openclaw issue and PR discovery when broad triage is requested."
+description: "RepoBar GitHub queue triage: current project by default; yhterrance/openclaw issue and PR discovery when broad triage is requested."
 ---
 
 # GitHub Project Triage
@@ -25,7 +25,7 @@ repobar_cmd() {
 repobar_cmd status --json
 ```
 
-Default owners for broad triage: `steipete`, `openclaw`. Do not include `amantus-ai` or other owners unless the user names them, the current repo is already under that owner, or the task explicitly asks for all/everything. For an exact owner-specific task, do not broaden beyond the named owner.
+Default owners for broad triage: `yhterrance`, `openclaw`. Do not include `amantus-ai` or other owners unless the user names them, the current repo is already under that owner, or the task explicitly asks for all/everything. For an exact owner-specific task, do not broaden beyond the named owner.
 
 ## Local Repo Gate
 
@@ -38,11 +38,11 @@ git pull --ff-only
 git status --short --branch
 ```
 
-Proceed only when the branch is `main`, the pull succeeds, and the worktree is clean. If the branch is not `main`, the pull fails, or `git status --short` shows changes, stop and ask Peter what to do. Do not switch branches, stash, commit, reset, restore, or clean without explicit direction.
+Proceed only when the branch is `main`, the pull succeeds, and the worktree is clean. If the branch is not `main`, the pull fails, or `git status --short` shows changes, stop and ask Terrance what to do. Do not switch branches, stash, commit, reset, restore, or clean without explicit direction.
 
 ## Scope Rule
 
-If the user says `triage` and the current working directory is a Git repo with a GitHub remote, triage only that project. Do not broaden to all Peter/org queues unless the user says `broad`, `all`, `everything`, names multiple owners/orgs, or asks for cross-repo triage.
+If the user says `triage` and the current working directory is a Git repo with a GitHub remote, triage only that project. Do not broaden to all Terrance/org queues unless the user says `broad`, `all`, `everything`, names multiple owners/orgs, or asks for cross-repo triage.
 
 Find the current project:
 
@@ -77,7 +77,7 @@ PR queue, primary triage order:
 repobar_cmd repos \
   --scope all \
   --only-with work \
-  --owner steipete \
+  --owner yhterrance \
   --owner openclaw \
   --sort prs \
   --json
@@ -89,7 +89,7 @@ Issue pressure, second pass when issues matter:
 repobar_cmd repos \
   --scope all \
   --only-with work \
-  --owner steipete \
+  --owner yhterrance \
   --owner openclaw \
   --sort issues \
   --json
@@ -100,13 +100,13 @@ Use `--forks` and `--archived` only when the user says "all", "everything", or a
 For a compact terminal view:
 
 ```bash
-repobar_cmd repos --scope all --only-with work --owner steipete --owner openclaw --sort prs --plain
+repobar_cmd repos --scope all --only-with work --owner yhterrance --owner openclaw --sort prs --plain
 ```
 
 Useful `jq` summary:
 
 ```bash
-repobar_cmd repos --scope all --only-with work --owner steipete --owner openclaw --sort prs --json |
+repobar_cmd repos --scope all --only-with work --owner yhterrance --owner openclaw --sort prs --json |
   jq -r '.[] | [.fullName, .openIssues, .openPulls, .activityTitle, .activityActor] | @tsv'
 ```
 
@@ -156,7 +156,7 @@ Prioritize:
 Deprioritize:
 
 - Archived repos unless the user asked for them.
-- Fork-only queues unless the fork is actively maintained by Peter.
+- Fork-only queues unless the fork is actively maintained by Terrance.
 - Old broad feature requests with no reproduction or owner signal.
 - Repos with missing/removable remotes until local state is clarified.
 
@@ -165,7 +165,7 @@ Deprioritize:
 For a broad scan, answer with:
 
 ```text
-Owners scanned: steipete, openclaw
+Owners scanned: yhterrance, openclaw
 Source: RepoBar <command summary>, plus gh for selected PRs/issues
 
 Top queues:

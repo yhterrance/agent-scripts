@@ -13,7 +13,7 @@ summary: Timeline of guardrail helper changes mirrored from Sweetistics and rela
 - Updated `codex-review` to run `gitcrawl doctor --json` for malformed local Gitcrawl DB errors before falling back to live GitHub reads.
 
 ## 2026-05-16 — GitHub Project Triage Scope
-- Updated `github-project-triage` to default broad queue scans to `steipete` and `openclaw`, sort PR triage by PR count, and preserve RepoBar order when summarizing.
+- Updated `github-project-triage` to default broad queue scans to `yhterrance` and `openclaw`, sort PR triage by PR count, and preserve RepoBar order when summarizing.
 
 ## 2026-05-14 — Video Transcript Dependency Update
 - Updated `video-transcript-downloader` to `youtube-transcript-plus` 2.0.0.
@@ -48,7 +48,7 @@ summary: Timeline of guardrail helper changes mirrored from Sweetistics and rela
 
 ## 2026-05-11 — clawmac GUI Access Note
 - Documented the Peekaboo through Jump Desktop workflow for clawmac GUI prompts and Chrome Safe Storage verification.
-- Documented `crabmac` as Peter's typo/alias for `clawmac`.
+- Documented `crabmac` as Terrance's typo/alias for `clawmac`.
 
 ## 2025-12-22 — Remove Custom rm Shim
 - Dropped `bin/rm` and `scripts/trash.ts`; rely on the system `trash` command for recoverable deletes.

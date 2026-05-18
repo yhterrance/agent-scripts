@@ -26,24 +26,24 @@ Recommended defaults:
 ## Commands (preferred)
 
 - Show help (once/session):
-  - `npx -y @steipete/oracle --help`
+  - `npx -y @yhterrance/oracle --help`
 
 - Preview (no tokens):
-  - `npx -y @steipete/oracle --dry-run summary -p "<task>" --file "src/**" --file "!**/*.test.*"`
-  - `npx -y @steipete/oracle --dry-run full -p "<task>" --file "src/**"`
+  - `npx -y @yhterrance/oracle --dry-run summary -p "<task>" --file "src/**" --file "!**/*.test.*"`
+  - `npx -y @yhterrance/oracle --dry-run full -p "<task>" --file "src/**"`
 
 - Token/cost sanity:
-  - `npx -y @steipete/oracle --dry-run summary --files-report -p "<task>" --file "src/**"`
+  - `npx -y @yhterrance/oracle --dry-run summary --files-report -p "<task>" --file "src/**"`
 
 - Startup/perf trace:
-  - `npx -y @steipete/oracle --perf-trace --perf-trace-path /tmp/oracle-perf.json --dry-run summary -p "<task>" --file "src/**"`
+  - `npx -y @yhterrance/oracle --perf-trace --perf-trace-path /tmp/oracle-perf.json --dry-run summary -p "<task>" --file "src/**"`
   - Use when CLI startup or time-to-first-output feels slow; inspect `first-output` and `exit`.
 
 - Browser run (main path; long-running is normal):
-  - `npx -y @steipete/oracle --engine browser --model gpt-5.5-pro -p "<task>" --file "src/**"`
+  - `npx -y @yhterrance/oracle --engine browser --model gpt-5.5-pro -p "<task>" --file "src/**"`
 
 - Manual paste fallback (assemble bundle, copy to clipboard):
-  - `npx -y @steipete/oracle --render --copy -p "<task>" --file "src/**"`
+  - `npx -y @yhterrance/oracle --render --copy -p "<task>" --file "src/**"`
   - Note: `--copy` is a hidden alias for `--copy-markdown`.
 
 ## Attaching files (`--file`)
@@ -70,7 +70,7 @@ Recommended defaults:
 - Target: keep total input under ~196k tokens.
 - Use `--files-report` (and/or `--dry-run json`) to spot the token hogs before spending.
 - Use `--perf-trace` / `ORACLE_PERF_TRACE=1` for startup and first-output timing. Traces redact prompts, tokens, keys, cookies, and inline cookie payloads; detached API children write a session-suffixed sidecar trace.
-- If you need hidden/advanced knobs: `npx -y @steipete/oracle --help --verbose`.
+- If you need hidden/advanced knobs: `npx -y @yhterrance/oracle --help --verbose`.
 
 ## Engines (API vs browser)
 

@@ -3,7 +3,7 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 
 ## Core
 
-- Workspace: `~/Projects`. Missing steipete repo: clone `https://github.com/steipete/<repo>.git`. 3rd-party/OSS: `~/Projects/oss`.
+- Workspace: `~/Projects`. Missing Terrance repo: clone from your GitHub account or ask for the repo URL. 3rd-party/OSS: `~/Projects/oss`.
 - "Make a note" here => terse `AGENTS.MD` edit. No separate `CLAUDE.md` here.
 - `ship` => changelog, commit in groups, push, pull.
 - Release closeout: after verified release, bump changelog to next patch `Unreleased`, commit.
@@ -21,7 +21,7 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 - Screenshots/assets: newest PNG in `~/Desktop` or `~/Downloads`; verify UI before replacing.
 - Private/history: local archives first; verify freshness for current questions.
 - Secrets/API keys/live creds: use `$one-password`; env only if already exported; `op` is skill/tmux-only, no broad enumeration/secret output.
-- Email/Google account for testing: use `gog+clawdbot@gmail.com`.
+- Shell: Terrance uses Fish interactively, but agent commands run zsh/POSIX unless explicitly writing commands for Terrance to paste.
 
 ## Project Defaults
 

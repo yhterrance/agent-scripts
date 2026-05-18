@@ -1,24 +1,24 @@
 ---
 name: remote-mac
-description: "Peter's Macs: MacBook, Mac Studio, clawmac, Tailscale, SSH, OpenClaw runtime topology."
+description: "Terrance's Macs: MacBook, Mac Studio, clawmac, Tailscale, SSH, OpenClaw runtime topology."
 ---
 
 # Remote Mac
 
-Use when the user says `MacBook`, `Mac Studio`, `clawmac`, `moltymac`, `Molty`, Tailscale, or asks to run/check something on one of Peter's Macs.
+Use when the user says `MacBook`, `Mac Studio`, `clawmac`, `moltymac`, `Molty`, Tailscale, or asks to run/check something on one of Terrance's Macs.
 
-## Peter's Topology
+## Terrance's Topology
 
-- Primary daily driver: Peter's MacBook Pro, local host `steipete-mbp`, Tailscale `peters-macbook-pro-1`.
-- Workhorse: Mac Studio, Tailscale `peters-mac-studio-1`, usually best reached as `steipete@steipete-macstudio.local`.
-- Personal cloud OpenClaw: `clawmac` (Peter may typo/say `crabmac`), Tailscale/SSH `steipete@clawmac`, gateway via LaunchAgent `ai.openclaw.gateway`, loopback `127.0.0.1:18789`, Telegram connected.
-- Molty: runs on Mac Studio, not `moltymac`, when healthy. Expected runtime is tmux session `openclaw-gateway-watch-main` from `/Users/steipete/clawdbot` with `pnpm gateway:watch --benchmark`, LAN bind `*:18789`, Discord bot `Molty`, plus Slack and Telegram connected.
+- Primary daily driver: Terrance's MacBook Pro, local host `yhterrance-mbp`, Tailscale `terrances-macbook-pro-1`.
+- Workhorse: Mac Studio, Tailscale `terrances-mac-studio-1`, usually best reached as `terrance@yhterrance-macstudio.local`.
+- Personal cloud OpenClaw: `clawmac` (Terrance may typo/say `crabmac`), Tailscale/SSH `terrance@clawmac`, gateway via LaunchAgent `ai.openclaw.gateway`, loopback `127.0.0.1:18789`, Telegram connected.
+- Molty: runs on Mac Studio, not `moltymac`, when healthy. Expected runtime is tmux session `openclaw-gateway-watch-main` from `/Users/terrance/clawdbot` with `pnpm gateway:watch --benchmark`, LAN bind `*:18789`, Discord bot `Molty`, plus Slack and Telegram connected.
 - `moltymac`: old/alternate node. If Tailscale shows it offline or SSH times out, do not treat it as the live Molty runtime.
 
 Manager repo source of truth:
 
-- `/Users/steipete/Projects/manager/computers.yaml`
-- `/Users/steipete/Projects/manager/agents.yaml`
+- `/Users/terrance/Projects/manager/computers.yaml`
+- `/Users/terrance/Projects/manager/agents.yaml`
 
 ## Discovery
 
@@ -31,7 +31,7 @@ arp -a
 ```
 
 3. Try mDNS names such as `HOST.local` when visible.
-4. For Mac Studio, prefer `steipete-macstudio.local` when Tailscale SSH times out.
+4. For Mac Studio, prefer `yhterrance-macstudio.local` when Tailscale SSH times out.
 
 ## SSH Rules
 
@@ -41,7 +41,7 @@ Use non-interactive SSH by default:
 ssh -o RequestTTY=no -o RemoteCommand=none HOST 'COMMAND'
 ```
 
-The local SSH alias `mac-studio` auto-attaches tmux. For one-shot commands, either use `steipete@steipete-macstudio.local` or override both options above.
+The local SSH alias `mac-studio` auto-attaches tmux. For one-shot commands, either use `terrance@yhterrance-macstudio.local` or override both options above.
 
 For long-running or interactive remote work, use tmux on the remote host and keep the session name obvious.
 
@@ -50,7 +50,7 @@ For long-running or interactive remote work, use tmux on the remote host and kee
 Use login shells on remote Macs so Homebrew and pnpm are on PATH:
 
 ```bash
-ssh -o RequestTTY=no -o RemoteCommand=none steipete@steipete-macstudio.local \
+ssh -o RequestTTY=no -o RemoteCommand=none terrance@yhterrance-macstudio.local \
   'zsh -lc "openclaw gateway status --json; openclaw channels status --json"'
 ```
 
@@ -72,12 +72,12 @@ clawmac healthy shape:
 - If SSH/cron hits GUI-only prompts, use local Peekaboo through Jump Desktop's `clawmac` window.
 - Find it with `peekaboo list windows --app "Jump Desktop" --json`; capture by `--window-title clawmac` or the reported `--window-id`.
 - Clicks use local global coordinates through the Jump Desktop window; verify with a raw window screenshot before clicking.
-- Chrome cookie/keychain issues: `security` may prompt for `Chrome Safe Storage`; Peter must enter the login keychain password, then click `Always Allow`.
-- After approval, verify over SSH with `/Users/steipete/Projects/bird/bird check` and `/Users/steipete/.openclaw/bin/bird-gui check`.
+- Chrome cookie/keychain issues: `security` may prompt for `Chrome Safe Storage`; Terrance must enter the login keychain password, then click `Always Allow`.
+- After approval, verify over SSH with `/Users/terrance/Projects/bird/bird check` and `/Users/terrance/.openclaw/bin/bird-gui check`.
 
 ## Safety
 
 - Do not assume host identity from a stale IP; verify hostname/user when possible.
 - Do not print secrets from remote files or shells.
 - If a host is unavailable after Tailscale + LAN fallback, say what was tried.
-- For OpenClaw Gateway on Peter's machines, follow repo docs/AGENTS; do not install/start/stop services unless asked.
+- For OpenClaw Gateway on Terrance's machines, follow repo docs/AGENTS; do not install/start/stop services unless asked.

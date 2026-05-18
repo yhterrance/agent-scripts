@@ -10,20 +10,20 @@ description: "ClawSweeper status: recent URLs, workflow health, active workers, 
 Run the bundled status script first:
 
 ```bash
-/Users/steipete/Projects/agent-scripts/skills/clawsweeper-status/scripts/clawsweeper-status.sh
+/Users/terrance/Projects/agent-scripts/skills/clawsweeper-status/scripts/clawsweeper-status.sh
 ```
 
 Useful options:
 
 ```bash
 # Last 10 hours for the default target repo, openclaw/openclaw
-/Users/steipete/Projects/agent-scripts/skills/clawsweeper-status/scripts/clawsweeper-status.sh --hours 10
+/Users/terrance/Projects/agent-scripts/skills/clawsweeper-status/scripts/clawsweeper-status.sh --hours 10
 
 # A different target repo
-/Users/steipete/Projects/agent-scripts/skills/clawsweeper-status/scripts/clawsweeper-status.sh --repo openclaw/clawhub
+/Users/terrance/Projects/agent-scripts/skills/clawsweeper-status/scripts/clawsweeper-status.sh --repo openclaw/clawhub
 
 # More rows per activity section
-/Users/steipete/Projects/agent-scripts/skills/clawsweeper-status/scripts/clawsweeper-status.sh --limit 15
+/Users/terrance/Projects/agent-scripts/skills/clawsweeper-status/scripts/clawsweeper-status.sh --limit 15
 ```
 
 ## Output Contract

@@ -1,6 +1,6 @@
 # Agent Scripts
 
-Shared agent instructions, skills, and small portable helpers for Peter's local workspaces.
+Shared agent instructions, skills, and small portable helpers for Terrance's local workspaces.
 
 This repo is the canonical place for:
 - `AGENTS.MD`: shared hard rules for Codex/Claude-style agents

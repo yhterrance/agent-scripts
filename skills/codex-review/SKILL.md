@@ -69,7 +69,7 @@ codex review --commit HEAD
 or with the helper:
 
 ```bash
-/Users/steipete/Projects/agent-scripts/skills/codex-review/scripts/codex-review --mode commit --commit HEAD
+/Users/terrance/Projects/agent-scripts/skills/codex-review/scripts/codex-review --mode commit --commit HEAD
 ```
 
 Use commit review for already-landed or already-pushed work on `main`. Reviewing
@@ -107,7 +107,7 @@ Bundled helper:
 If installed from `agent-scripts`, path is:
 
 ```bash
-/Users/steipete/Projects/agent-scripts/skills/codex-review/scripts/codex-review --help
+/Users/terrance/Projects/agent-scripts/skills/codex-review/scripts/codex-review --help
 ```
 
 The helper:

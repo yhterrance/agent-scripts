@@ -31,11 +31,11 @@ Get VM status/IP:
 prlctl list --info "macOS Tahoe"
 ```
 
-Run guest commands as Peter:
+Run guest commands as Terrance:
 
 ```bash
 prlctl exec "macOS Tahoe" \
-  'sudo -u steipete -H /bin/zsh -lc '\''source ~/.zprofile 2>/dev/null || true; uname -a'\'''
+  'sudo -u terrance -H /bin/zsh -lc '\''source ~/.zprofile 2>/dev/null || true; uname -a'\'''
 ```
 
 Capture an independent host-side screenshot:
@@ -59,13 +59,13 @@ Open the Screen Recording pane:
 
 ```bash
 prlctl exec "macOS Tahoe" \
-  'sudo -u steipete -H open "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"'
+  'sudo -u terrance -H open "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"'
 ```
 
 Open Ghostty:
 
 ```bash
-prlctl exec "macOS Tahoe" 'sudo -u steipete -H open -a Ghostty'
+prlctl exec "macOS Tahoe" 'sudo -u terrance -H open -a Ghostty'
 ```
 
 ## Running Commands Through Ghostty
@@ -75,7 +75,7 @@ Best path: create a guest script with `prlctl exec`, open/focus Ghostty, then ty
 Guest script pattern:
 
 ```bash
-prlctl exec "macOS Tahoe" 'sudo -u steipete -H /bin/zsh -lc '\''cat > /tmp/run-vm-lab.zsh <<EOF
+prlctl exec "macOS Tahoe" 'sudo -u terrance -H /bin/zsh -lc '\''cat > /tmp/run-vm-lab.zsh <<EOF
 #!/bin/zsh
 source ~/.zprofile 2>/dev/null || true
 cd ~/Projects/Peekaboo || exit 1
@@ -96,7 +96,7 @@ Then link the launcher into Ghostty's home directory and type `./r` with `script
 
 ```bash
 prlctl exec "macOS Tahoe" \
-  "sudo -u steipete -H /bin/zsh -lc 'ln -sf /tmp/run-vm-lab.zsh ~/r'"
+  "sudo -u terrance -H /bin/zsh -lc 'ln -sf /tmp/run-vm-lab.zsh ~/r'"
 python3 skills/vm-lab/scripts/parallels_type.py "macOS Tahoe" $'./r\n'
 ```
 
@@ -156,7 +156,7 @@ Compare:
 
 ```bash
 prlctl exec "macOS Tahoe" \
-  'sudo -u steipete -H /bin/zsh -lc '\''sips -g pixelWidth -g pixelHeight /tmp/peekaboo-vm.png'\'''
+  'sudo -u terrance -H /bin/zsh -lc '\''sips -g pixelWidth -g pixelHeight /tmp/peekaboo-vm.png'\'''
 sips -g pixelWidth -g pixelHeight /tmp/vm-prlctl-reference.png
 ```
 

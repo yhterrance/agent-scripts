@@ -27,7 +27,7 @@ Use for npm registry/account tasks: `npm whoami`, package availability, package 
 Use `scripts/reserve-packages.sh` from inside the same tmux session:
 
 ```bash
-/Users/steipete/Projects/agent-scripts/skills/npm/scripts/reserve-packages.sh package-one package-two
+/Users/terrance/Projects/agent-scripts/skills/npm/scripts/reserve-packages.sh package-one package-two
 ```
 
 What it does:

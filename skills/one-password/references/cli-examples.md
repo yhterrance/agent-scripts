@@ -28,10 +28,10 @@
 - `op whoami`
 - `op account list`
 
-## Peter multi-account
+## Terrance multi-account
 
 - Always run these inside tmux.
-- Default account for Peter secrets: `--account my.1password.com`.
+- Default account for Terrance secrets: `--account my.1password.com`.
 - Do not use `my.1password.eu` / Titan unless requested.
 
 ## Item create/edit without printing secrets
