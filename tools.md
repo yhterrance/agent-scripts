@@ -27,3 +27,16 @@ Notes:
 - Prefer `gh pr view/diff` for PR context over web search.
 - Use `gh run list/view` for GitHub Actions CI.
 - Do not publish, comment, merge, push, or change remote state unless the user asks.
+
+## agent-browser
+
+Headless/headed Chrome CLI for inspecting and automating web apps from the terminal. Daemon-backed (fast between commands), supports snapshots with refs, screenshots, network/HAR, CPU/React profiling, CDP attach.
+
+```bash
+agent-browser --help
+agent-browser skills get core --full   # canonical reference
+```
+
+When to use: localhost UI checks, repro a bug, take a screenshot, profile a slow page, drive a flow.
+
+See skill `agent-browser` for workflows: Dev Chrome profile auth, page inspection recipe, high-CPU triage decision tree, the `cpu-probe.js` init-script template.
