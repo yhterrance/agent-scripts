@@ -4,6 +4,15 @@ summary: Timeline of guardrail helper changes mirrored from Sweetistics and rela
 
 # Changelog
 
+## 2026-05-19 — rAF Stack-Trace Sampler
+- Added `agent-browser` `raf-sampler-install.js` / `raf-sampler-analyze.js` scripts and triage step 6 in `SKILL.md` for buckets-by-call-site identification of runaway rAF loops (canvas/tldraw/third-party).
+- Documented `cpu-probe.js` `activeTimeouts` caveat — counter only decrements on explicit `clearTimeout`; prefer the `totalTimeoutsCreated` delta as the timer-pressure signal.
+
+## 2026-05-19 — Agent-Browser Skill
+- Added `agent-browser` skill with localhost auth via Dev Chrome profile, page-inspection recipe (snapshot refs + spatial verification via `get box`), performance-profiling decision tree (vitals → React renders → CDP profiler), and manual-driving workflow under `--headed`.
+- Added `cpu-probe.js` init-script template that patches `rAF` / `setInterval` / `setTimeout`, observes long tasks, and exposes a rolling 1 s rate at `window.__cpuProbeRate`.
+- Listed `agent-browser` in `tools.md` so agentic tasks discover it for localhost UI checks and dev-page profiling.
+
 ## 2026-05-18 — Linear Save Issue
 - Updated `linear` to call `save_issue` (upsert) for create/update; removed stale `create_issue` reference.
 

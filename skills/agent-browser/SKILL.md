@@ -68,11 +68,26 @@ Don't profile 3 min of activity. CDP traces explode in size and DevTools chokes 
    - `activeIntervals` / `activeTimeouts` high => leak.
 4. `network requests --type websocket` and `console --json | tail -50` — streaming firehose or log spam?
 5. `react renders start && sleep 15 && react renders stop --json` — sort by `renderCount`. A component rendering hundreds of times at idle = the bug.
-6. Only if 5 doesn't pinpoint it: `profiler start && sleep 20 && profiler stop /tmp/idle-hot.json`. Load in Chrome DevTools → Performance. Bottom-Up sorted by Self Time.
+6. If high `rafPerSec` but React renders is *not* the culprit (canvas / tldraw / third-party loop): install `raf-sampler-install.js`, wait ~10 s, run `raf-sampler-analyze.js`. Buckets samples by call-site fingerprint — points straight at the file:line calling rAF.
+7. Only if 5 + 6 don't pinpoint it: `profiler start && sleep 20 && profiler stop /tmp/idle-hot.json`. Load in Chrome DevTools → Performance. Bottom-Up sorted by Self Time.
 
 ### CPU probe template
 
 `skills/agent-browser/scripts/cpu-probe.js` (this skill dir). Patches `rAF`, `setInterval`, `setTimeout`, observes long tasks, exposes `window.__cpuProbeRate`. Copy to `/tmp/` or pass directly to `--init-script`.
+
+Caveat: `activeTimeouts` only decrements on explicit `clearTimeout`, not when timers fire naturally — so it counts "ever-created-and-not-explicitly-cleared". Prefer the delta of `totalTimeoutsCreated` over a window as the timer-pressure signal. `activeIntervals` is accurate.
+
+### rAF stack-trace sampler
+
+`raf-sampler-install.js` + `raf-sampler-analyze.js` (this skill dir). Pipe into `agent-browser eval --stdin`. Captures stack at every 20th rAF (cap 500 samples), then buckets by top-4-frame fingerprint. Multiply bucket count by `sampleEvery` for the approximate per-source rAF volume.
+
+```bash
+agent-browser eval --stdin < ~/Projects/agent-scripts/skills/agent-browser/scripts/raf-sampler-install.js
+sleep 10
+agent-browser eval --stdin < ~/Projects/agent-scripts/skills/agent-browser/scripts/raf-sampler-analyze.js
+```
+
+Reset between measurements by re-running the install script (detects existing install and resets in place).
 
 Launch with it:
 
