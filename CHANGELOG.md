@@ -4,6 +4,11 @@ summary: Timeline of guardrail helper changes mirrored from Sweetistics and rela
 
 # Changelog
 
+## 2026-05-19 — Agent-Browser Skill Slimmed
+- Removed `cpu-probe.js`, `raf-sampler-install.js`, `raf-sampler-analyze.js`, the perf-profiling decision tree, page-inspection recipe, and quirks list from the `agent-browser` skill — inline guidance was misleading agents; SKILL.md now defers to `agent-browser skills get core --full` / `--help` for everything except the environment-specific Dev Chrome profile setup.
+- Updated `tools.md` `agent-browser` entry to point at the CLI's own reference instead of the removed scripts.
+- Made `--enable react-devtools` default-on in the `Dev` profile launch example — flag is launch-time only, so forgetting it costs a full relaunch; drop it only when measuring micro-perf with zero instrumentation.
+
 ## 2026-05-19 — rAF Stack-Trace Sampler
 - Added `agent-browser` `raf-sampler-install.js` / `raf-sampler-analyze.js` scripts and triage step 6 in `SKILL.md` for buckets-by-call-site identification of runaway rAF loops (canvas/tldraw/third-party).
 - Documented `cpu-probe.js` `activeTimeouts` caveat — counter only decrements on explicit `clearTimeout`; prefer the `totalTimeoutsCreated` delta as the timer-pressure signal.

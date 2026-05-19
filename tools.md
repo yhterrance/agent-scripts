@@ -39,4 +39,4 @@ agent-browser skills get core --full   # canonical reference
 
 When to use: localhost UI checks, repro a bug, take a screenshot, profile a slow page, drive a flow.
 
-See skill `agent-browser` for workflows: Dev Chrome profile auth, page inspection recipe, high-CPU triage decision tree, the `cpu-probe.js` init-script template.
+See skill `agent-browser` for the Dev Chrome profile auth setup on this machine. For commands, flags, and triage recipes, run `agent-browser skills get core --full` or `agent-browser --help`.
