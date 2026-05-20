@@ -29,6 +29,7 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 - Bugs: add regression test when it fits.
 - Use repo package manager/runtime; no swaps without approval.
 - Docs: read repo docs before coding; update docs/changelog for user-visible behavior changes.
+- Dependency source: before reading `node_modules`, check source in `~/Projects/oss`; if missing, then inspect `node_modules`.
 - Inline code comments: brief notes for tricky, bug-prone, or previously buggy logic.
 - New deps: quick health check for recent releases/commits/adoption.
 
