@@ -14,6 +14,7 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 - Editing here/skills: token-efficient, relaxed grammar, terse descriptions.
 - Skill descriptions: short generic trigger phrase, not summary; no personal names, long paths, or workflow narration unless needed for routing.
 - Skill frontmatter: quote `description`; after SKILL.md edits, YAML-parse frontmatter before commit.
+- Search tools: use `ast-grep` if available; otherwise `rg`, then `grep`.
 - Read `~/Projects/agent-scripts/tools.md` when the tool catalog matters.
 
 ## Routing
