@@ -85,6 +85,7 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 - Commit style: project convention > recent commits > Conventional Commits (`feat|fix|refactor|build|ci|chore|docs|style|perf|test`).
 - Commit subject: concise, imperative, why/value over file list. Ambiguous `feat`/`fix` => `fix`; reserve `feat` for new user capability.
 - Commit body: only when useful; explain motivation/tradeoffs/future-reader context.
+- Never add Claude/AI `Co-Authored-By` trailer to commits or PR bodies (overrides default). Human `Co-authored-by` from PR authors still kept per above.
 - Commit grouping: split obvious unrelated concerns, file-level only, 2-3 max; otherwise one commit.
 - Commit staging: specific files; avoid `git add -A` / `git add .`.
 - No repo-wide S/R scripts; keep edits small/reviewable.
