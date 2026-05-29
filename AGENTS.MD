@@ -31,7 +31,7 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 - Use repo package manager/runtime; no swaps without approval.
 - Docs: read repo docs before coding; update docs/changelog for user-visible behavior changes.
 - Dependency source: before reading `node_modules`, check source in `~/Projects/oss`; if missing, then inspect `node_modules`.
-- Inline code comments: brief notes for tricky, bug-prone, or previously buggy logic.
+- Inline code comments: brief notes for tricky, bug-prone, or previously buggy logic. Capture non-obvious why once at the owning site; don't restate a fact across comments or narrate what code shows; if removing loses no fact, drop it.
 - New deps: quick health check for recent releases/commits/adoption.
 
 ## PR / CI
