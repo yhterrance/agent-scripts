@@ -4,6 +4,9 @@ summary: Timeline of guardrail helper changes mirrored from Sweetistics and rela
 
 # Changelog
 
+## 2026-06-11 — Codex Review Disabled
+- Disabled the `codex-review` skill by moving it to `disabled-skills/` and removed active AGENTS/CI references to it.
+
 ## 2026-05-19 — Agent-Browser Skill Slimmed
 - Removed `cpu-probe.js`, `raf-sampler-install.js`, `raf-sampler-analyze.js`, the perf-profiling decision tree, page-inspection recipe, and quirks list from the `agent-browser` skill — inline guidance was misleading agents; SKILL.md now defers to `agent-browser skills get core --full` / `--help` for everything except the environment-specific Dev Chrome profile setup.
 - Updated `tools.md` `agent-browser` entry to point at the CLI's own reference instead of the removed scripts.
