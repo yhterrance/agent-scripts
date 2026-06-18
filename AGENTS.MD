@@ -16,6 +16,7 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 - Skill frontmatter: quote `description`; after SKILL.md edits, YAML-parse frontmatter before commit.
 - Search tools: use `ast-grep` if available; otherwise `rg`, then `grep`.
 - Read `~/Projects/agent-scripts/tools.md` when the tool catalog matters.
+- Statusline lives at `scripts/statusline.sh`; install on a new machine via `scripts/install-statusline.sh` (symlinks `~/.claude/statusline.sh` + wires `settings.json`). Idempotent.
 
 ## Routing
 
