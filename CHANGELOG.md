@@ -4,6 +4,9 @@ summary: Timeline of guardrail helper changes mirrored from Sweetistics and rela
 
 # Changelog
 
+## 2026-06-25 — Remove mcporter Skills
+- Removed the active `linear` skill and disabled mcporter-backed skills so official MCP connectors handle those workflows.
+
 ## 2026-06-11 — Codex Review Disabled
 - Disabled the `codex-review` skill by moving it to `disabled-skills/` and removed active AGENTS/CI references to it.
 
