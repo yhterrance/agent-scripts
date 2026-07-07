@@ -2,6 +2,8 @@
 
 Shared agent instructions, skills, and small portable helpers for Terrance's local workspaces.
 
+Setting up a fresh machine? See [`SETUP.md`](SETUP.md).
+
 This repo is the canonical place for:
 - `AGENTS.MD`: shared hard rules for Codex/Claude-style agents
 - `skills/`: reusable workflow skills, including repo-owned skills exposed by symlink
