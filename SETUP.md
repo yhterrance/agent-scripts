@@ -65,15 +65,3 @@ Codex has no hook mechanism — rtk on Codex is instruction-only (voluntary `rtk
 ## 7. settings.json
 
 Not tracked here (per-machine: hooks, permissions, statusLine). Steps 4 and 6 patch it in place. If migrating a machine, copy the old `~/.claude/settings.json` over manually and re-run `rtk init --show` / `install-statusline.sh` to confirm the entries survived.
-
-## 8. Claude Code plugins (per-machine)
-
-Third-party skills installed via the Claude Code marketplace live in the versioned plugin cache (auto-updating), **not** in this repo's `skills/`. Reinstall per machine:
-
-```sh
-claude plugin marketplace add mvanhorn/last30days-skill
-claude plugin install last30days@last30days-skill
-claude plugin list                       # verify: enabled, user scope
-```
-
-Prefer the marketplace over vendoring third-party skills into `skills/` — it auto-updates and avoids duplicate command entries.
