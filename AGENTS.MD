@@ -116,3 +116,5 @@ Tool mapping:
 - Skill: open the referenced SKILL.md and follow it
 - ExitPlanMode: ignore
 <!-- END COMPOUND CODEX TOOL MAP -->
+
+@RTK.md
