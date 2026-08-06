@@ -1,15 +1,10 @@
-Work style: telegraph; noun-phrases ok; drop grammar; min tokens.
-Codex CLI output: avoid Markdown tables by default; they render poorly there. Use short bullets or `key: value` lines instead. Only use a table when explicitly requested.
+"Always talk in ASD-STE100 Simplified Technical English. Always read CONTEXT.md files, and use their ubiquitous language."
 
 ## Core
 
 - Workspace: `~/Projects`. Missing Terrance repo: clone from your GitHub account or ask for the repo URL. 3rd-party/OSS: `~/Projects/oss`.
 - "Make a note" here => terse `AGENTS.MD` edit. No separate `CLAUDE.md` here.
 - `ship` => changelog, commit in groups, push, pull.
-- Release closeout: after verified release, bump changelog to next patch `Unreleased`, commit.
-- Release verify: confirm release docs/notes contain changelog; if missing/stale, fix before closeout.
-- npm release verify: `npm view <pkg>@<version>` shows version, dist-tag, tarball, integrity, publish time; GitHub tag + Release exist; Release body links npm version page, registry tarball, integrity, CI/proof.
-- Changelogs: match file style; prefer one bullet per entry on one line. Do not hard-wrap changelog bullets just because prose is long.
 - Skills are canonical for tool workflows. Keep this file to hard rules only.
 - Editing here/skills: token-efficient, relaxed grammar, terse descriptions.
 - Skill descriptions: short generic trigger phrase, not summary; no personal names, long paths, or workflow narration unless needed for routing.
@@ -21,10 +16,7 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 ## Routing
 
 - Screenshots/assets: newest PNG in `~/Desktop` or `~/Downloads`; verify UI before replacing.
-- Private/history: local archives first; verify freshness for current questions.
 - Calendar: use Fantastical MCP when possible. Personal events → `Terrance's Events`; work events → `terrance.chen@illoca.com`.
-- Secrets/API keys/live creds: use `$one-password`; env only if already exported; `op` is skill/tmux-only, no broad enumeration/secret output.
-- Shell: Terrance uses Fish interactively, but agent commands run zsh/POSIX unless explicitly writing commands for Terrance to paste.
 
 ## Project Defaults
 
@@ -48,7 +40,6 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 - PR Test Plan: include commands/checks actually run, manual verification, and skipped checks with reason. Omit for trivial docs/config typo when verification is self-evident.
 - PR visuals: use diagram/table only when faster than prose; prose stays authoritative.
 - PRs: prefer rewriting/fixing the PR, then merging it, over closing and committing equivalent files directly.
-- Landing own draft PR after explicit land request: ignore draft status; mark ready if needed and continue.
 - `fix ci`: consent to pull, commit, push; fix/rerun/watch until CI green.
 - CI: `gh run list/view`; rerun/fix until green when asked.
 - `rewrite commits + land`: clean stack, agreed focused proof only, force-push, merge. No PR-body proof polish or CI babysitting unless asked.
@@ -66,7 +57,6 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 
 ## Runtime Safety
 
-- zsh: don't use `status` as a variable.
 - Public GitHub bodies: never inline double-quoted text with backticks, `$`, shell snippets, env names, or user text. Use temp file + `cat <<'EOF'` + inspect + `--body-file`.
 - Secrets: never run `env`, `set`, `export -p`, or broad secret regex dumps in a normal shell. Query exact names only; redact values.
 - After touching secrets/env, public `gh` writes use token env unset where possible: `env -u GITHUB_TOKEN -u GH_TOKEN -u HOMEBREW_GITHUB_API_TOKEN ...`.
