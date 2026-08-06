@@ -6,3 +6,9 @@ bin/*
 !bin/git
 !bin/rm
 skills/.system/
+
+# Third-party installers write into ~/.claude/skills (a symlink to skills/), so
+# their relative symlinks land here dangling. Use the plugin versions instead.
+skills/domain-driven-design
+skills/simple-english
+skills/tanstack-query-best-practices
