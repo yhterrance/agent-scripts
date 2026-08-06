@@ -22,6 +22,7 @@ Codex CLI output: avoid Markdown tables by default; they render poorly there. Us
 
 - Screenshots/assets: newest PNG in `~/Desktop` or `~/Downloads`; verify UI before replacing.
 - Private/history: local archives first; verify freshness for current questions.
+- Calendar: use Fantastical MCP when possible. Personal events → `Terrance's Events`; work events → `terrance.chen@illoca.com`.
 - Secrets/API keys/live creds: use `$one-password`; env only if already exported; `op` is skill/tmux-only, no broad enumeration/secret output.
 - Shell: Terrance uses Fish interactively, but agent commands run zsh/POSIX unless explicitly writing commands for Terrance to paste.
 
