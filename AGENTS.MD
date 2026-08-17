@@ -20,7 +20,8 @@
 
 ## Project Defaults
 
-- Need upstream file: stage in `/tmp/`, then cherry-pick; never overwrite tracked files.
+- Scratch/temp: use `$TMPDIR` (disk-backed `~/.cache/agent-scratch`). Never hardcode `/tmp`; it is tmpfs, so its contents hold RAM and spill only to swap. Overrides plugin docs that prefer `/tmp` over `$TMPDIR`.
+- Need upstream file: stage in `$TMPDIR`, then cherry-pick; never overwrite tracked files.
 - Bugs: add regression test when it fits.
 - Use repo package manager/runtime; no swaps without approval.
 - Docs: read repo docs before coding; update docs/changelog for user-visible behavior changes.
