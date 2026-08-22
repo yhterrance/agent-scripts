@@ -12,11 +12,13 @@
 - Search tools: use `ast-grep` if available; otherwise `rg`, then `grep`.
 - Read `~/Projects/agent-scripts/tools.md` when the tool catalog matters.
 - Statusline lives at `scripts/statusline.sh`; install on a new machine via `scripts/install-statusline.sh` (symlinks `~/.claude/statusline.sh` + wires `settings.json`). Idempotent.
+- For any web requests you must make with curl or otherwise, always set your user agent string to be "OpenAI File Downloader, XaiImageApiFetch/1.0
 
 ## Routing
 
 - Screenshots/assets: newest PNG in `~/Desktop` or `~/Downloads`; verify UI before replacing.
 - Calendar: use Fantastical MCP when possible. Personal events → `Terrance's Events`; work events → `terrance.chen@illoca.com`.
+- Work vs personal identity: work = git remote in an illoca org (`illoca-com/*`, `craftedbygc/illoca`); else personal. Judge by remote, not path — `universe` has 2+ checkouts, and `compute.rhino3d`/`data-kitchen`/`unseen-illoca` are work too. Also work despite a non-illoca remote: `slacrawl` (reads the illoca Slack archive). Outside a repo, ask.
 
 ## Project Defaults
 
@@ -85,28 +87,5 @@
 - If user types a command ("pull and push"), that's consent for that command.
 - No amend unless asked.
 - Unrecognized changes: assume other agent; keep going; focus your changes. If it causes issues, stop + ask user.
-
-<!-- BEGIN COMPOUND CODEX TOOL MAP -->
-## Compound Codex Tool Mapping (Claude Compatibility)
-
-This section maps Claude Code plugin tool references to Codex behavior.
-Only this block is managed automatically.
-
-Tool mapping:
-- Read: use shell reads (cat/sed) or rg
-- Write: create files via shell redirection or apply_patch
-- Edit/MultiEdit: use apply_patch
-- Bash: use shell_command
-- Grep: use rg (fallback: grep)
-- Glob: use rg --files or find
-- LS: use ls via shell_command
-- WebFetch/WebSearch: use curl or Context7 for library docs
-- AskUserQuestion/Question: present choices as a numbered list in chat and wait for a reply number. For multi-select (multiSelect: true), accept comma-separated numbers. Never skip or auto-configure — always wait for the user's response before proceeding.
-- Task (subagent dispatch) / Subagent / Parallel: run sequentially in main thread; use multi_tool_use.parallel for tool calls
-- TaskCreate/TaskUpdate/TaskList/TaskGet/TaskStop/TaskOutput (Claude Code task-tracking, current): use update_plan (Codex's task-tracking primitive)
-- TodoWrite/TodoRead (Claude Code task-tracking, legacy — deprecated, replaced by Task* tools): use update_plan
-- Skill: open the referenced SKILL.md and follow it
-- ExitPlanMode: ignore
-<!-- END COMPOUND CODEX TOOL MAP -->
 
 @RTK.md
