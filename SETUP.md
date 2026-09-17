@@ -6,7 +6,6 @@ Canonical config lives here; machines consume it via symlinks. `settings.json` i
 
 - `git`, `python3` (statusline installer), `bun` (TS helpers: `browser-tools.ts`, `docs-list.ts`)
 - Claude Code and/or Codex CLI
-- `rtk` (token optimizer) — `brew install rtk`
 
 ## 2. Clone
 
@@ -29,14 +28,6 @@ ln -sf ~/Projects/agent-scripts/skills    ~/.claude/skills
 ln -sf ~/Projects/agent-scripts/skills    ~/.codex/skills
 ```
 
-RTK doc (referenced by `@RTK.md` in `AGENTS.MD`):
-
-```sh
-ln -sf ~/Projects/agent-scripts/RTK.md ~/.claude/RTK.md
-# only if using rtk with Codex too:
-# ln -sf ~/Projects/agent-scripts/RTK.md ~/.codex/RTK.md
-```
-
 ## 4. Statusline
 
 ```sh
@@ -49,19 +40,6 @@ scripts/install-statusline.sh   # symlinks ~/.claude/statusline.sh + wires setti
 git config core.hooksPath hooks   # runs scripts/validate-skills on pre-commit
 ```
 
-## 6. rtk hook (per-machine — not in this repo)
+## 6. settings.json
 
-The token savings come from a `PreToolUse` Bash hook in `~/.claude/settings.json`, which is machine-local. Install it per machine:
-
-```sh
-rtk init -g            # installs the hook + regenerates RTK.md, patches settings.json
-rtk init --show        # verify
-```
-
-Because `~/.claude/RTK.md` is the symlink from step 3, `rtk init` writes the refreshed doc **through** it into this repo — commit the diff if it changed. A bare `brew upgrade rtk` does **not** touch RTK.md; only `rtk init` regenerates it.
-
-Codex has no hook mechanism — rtk on Codex is instruction-only (voluntary `rtk <cmd>`), no transparent savings. Skip unless you want the doc.
-
-## 7. settings.json
-
-Not tracked here (per-machine: hooks, permissions, statusLine). Steps 4 and 6 patch it in place. If migrating a machine, copy the old `~/.claude/settings.json` over manually and re-run `rtk init --show` / `install-statusline.sh` to confirm the entries survived.
+Not tracked here (per-machine: hooks, permissions, statusLine). Step 4 patches it in place. If migrating a machine, copy the old `~/.claude/settings.json` over manually and re-run `install-statusline.sh` to confirm the entries survived.

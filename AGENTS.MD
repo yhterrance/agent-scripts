@@ -87,5 +87,3 @@
 - If user types a command ("pull and push"), that's consent for that command.
 - No amend unless asked.
 - Unrecognized changes: assume other agent; keep going; focus your changes. If it causes issues, stop + ask user.
-
-@RTK.md
