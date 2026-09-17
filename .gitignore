@@ -7,6 +7,10 @@ bin/*
 !bin/rm
 skills/.system/
 
+# Claude Code syncs account skills into ~/.claude/skills (a symlink to skills/).
+# Cache, regenerated on sync.
+skills/synced/
+
 # Third-party installers write into ~/.claude/skills (a symlink to skills/), so
 # their relative symlinks land here dangling. Use the plugin versions instead.
 skills/domain-driven-design
