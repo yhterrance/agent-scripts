@@ -16,3 +16,6 @@ skills/synced/
 skills/domain-driven-design
 skills/simple-english
 skills/tanstack-query-best-practices
+
+# Owned and rewritten by the tldraw Desktop app (installed-by marker in SKILL.md).
+skills/tldraw-offline/
