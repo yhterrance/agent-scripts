@@ -4,6 +4,9 @@ summary: Timeline of guardrail helper changes mirrored from Sweetistics and rela
 
 # Changelog
 
+## 2026-09-22 — Trim-Comments Skill
+- Added `trim-comments` skill: comment-only cleanup pass that cuts narration comments from agent-written code and keeps only non-obvious why.
+
 ## 2026-06-25 — Remove mcporter Skills
 - Removed the active `linear` skill and disabled mcporter-backed skills so official MCP connectors handle those workflows.
 
