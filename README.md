@@ -6,7 +6,7 @@ Setting up a fresh machine? See [`SETUP.md`](SETUP.md).
 
 This repo is the canonical place for:
 - `AGENTS.MD`: shared hard rules for Codex/Claude-style agents
-- `skills/`: reusable workflow skills, including repo-owned skills exposed by symlink
+- `skills/`: reusable workflow skills, including pointers to repo-owned skills
 - `scripts/`: dependency-light helpers used across projects
 - `hooks/`: local guardrails such as skill validation
 
@@ -32,13 +32,13 @@ Global discovery usually points here:
 - `~/.codex/skills -> ~/Projects/agent-scripts/skills`
 - `~/.claude/skills -> ~/Projects/agent-scripts/skills`
 
-Shared skills live as real folders in `skills/`. Repo-owned skills stay canonical in their repo and are exposed here with tracked relative symlinks, for example:
+Shared skills live as real folders in `skills/`. Repo-owned skills stay canonical in their repo and are exposed here with a pointer `SKILL.md` that tells the agent to read the repo copy first; local notes in the pointer override it. For example, `skills/slacrawl/SKILL.md` points to:
 
 ```text
-skills/discrawl -> ../../discrawl/.agents/skills/discrawl
+~/Projects/slacrawl/.agents/skills/slacrawl/SKILL.md
 ```
 
-Current symlinked repo-owned skills include `birdclaw`, `discrawl`, `gog`, `imsg`, `slacrawl`, `wacli`, and `wacrawl`.
+Current pointer skills: `slacrawl`.
 
 ## Agent Instructions
 
