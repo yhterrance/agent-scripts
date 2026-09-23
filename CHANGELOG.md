@@ -4,6 +4,9 @@ summary: Timeline of guardrail helper changes mirrored from Sweetistics and rela
 
 # Changelog
 
+## 2026-09-22 — Trim-Tests Skill
+- Added `trim-tests` skill: test-only cleanup pass that cuts agent-written tests of simple code and tests no real bug can fail (change-detectors, mock echoes, duplicates); keeps only complex-behaviour, regression, boundary, and contract tests.
+
 ## 2026-09-22 — Trim-Comments Skill
 - Added `trim-comments` skill: comment-only cleanup pass that cuts narration comments from agent-written code and keeps only non-obvious why.
 
