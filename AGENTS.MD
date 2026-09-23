@@ -17,6 +17,7 @@
 ## Routing
 
 - Screenshots/assets: newest PNG in `~/Desktop` or `~/Downloads`; verify UI before replacing.
+- Slack: use Slack MCP. `slacrawl` only when user names it explicitly.
 - Calendar: use Fantastical MCP when possible. Personal events → `Terrance's Events`; work events → `terrance.chen@illoca.com`.
 - Work vs personal identity: work = git remote in an illoca org (`illoca-com/*`, `craftedbygc/illoca`); else personal. Judge by remote, not path — `universe` has 2+ checkouts, and `compute.rhino3d`/`data-kitchen`/`unseen-illoca` are work too. Also work despite a non-illoca remote: `slacrawl` (reads the illoca Slack archive). Outside a repo, ask.
 

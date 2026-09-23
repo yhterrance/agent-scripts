@@ -4,6 +4,9 @@ summary: Timeline of guardrail helper changes mirrored from Sweetistics and rela
 
 # Changelog
 
+## 2026-09-23 — Slacrawl Explicit-Only
+- `slacrawl` skill now triggers only when the user names it; plain Slack requests route to Slack MCP (`AGENTS.MD` Routing rule).
+
 ## 2026-09-22 — Trim-Tests Skill
 - Added `trim-tests` skill: test-only cleanup pass that cuts agent-written tests of simple code and tests no real bug can fail (change-detectors, mock echoes, duplicates); keeps only complex-behaviour, regression, boundary, and contract tests.
 
