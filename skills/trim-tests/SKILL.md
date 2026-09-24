@@ -19,7 +19,6 @@ Keep only tests of **complex** behaviour. Agents write **simple** code correctly
    - Done when: every test file in scope is listed and the baseline is recorded.
 
 2. **Classify every test case in scope** with two gates, in order:
-   - **Regression test** → **keep**. Skip both gates.
    - Does it test **complex** behaviour? No → **cut**.
    - Delete it — can a bug in that complex behaviour ship with every remaining test still green? No → **cut**. Yes → **keep**.
    - Several kept cases hit the same branch with different literals → **merge** into one parameterized case (`it.each`, `pytest.mark.parametrize`, table-driven Go, etc.) when the file already uses that idiom or the framework supports it; else keep the one strongest case and cut the rest.
@@ -48,7 +47,6 @@ Keep only tests of **complex** behaviour. Agents write **simple** code correctly
 - Snapshot of large output no reviewer reads; replace with assertions on the fields that matter only if those fields carry behaviour.
 
 **Keep** — complex behaviour, asserted through the public interface:
-- **Regression test** for a fixed bug, with issue ID or link when present. Always keep: the bug proves the code was not simple.
 - Boundary and error paths with real risk: empty, null, off-by-one, overflow, timezone, encoding, concurrency, partial failure.
 - Contract at a system seam: API schema, serialization format, persisted data shape, migration, CLI output another tool parses.
 - A non-obvious rule the code implements (pricing, permissions, state transitions) — one case per rule branch.
