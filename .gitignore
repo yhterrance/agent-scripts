@@ -19,3 +19,9 @@ skills/tanstack-query-best-practices
 
 # Owned and rewritten by the tldraw Desktop app (installed-by marker in SKILL.md).
 skills/tldraw-offline/
+
+# Owned and rewritten by the treg installer.
+skills/treg/
+
+# Trash left by skill deletes.
+skills/.trash/
