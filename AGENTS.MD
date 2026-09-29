@@ -12,7 +12,7 @@
 - Search tools: use `ast-grep` if available; otherwise `rg`, then `grep`.
 - Read `~/Projects/agent-scripts/tools.md` when the tool catalog matters.
 - Statusline lives at `scripts/statusline.sh`; install on a new machine via `scripts/install-statusline.sh` (symlinks `~/.claude/statusline.sh` + wires `settings.json`). Idempotent.
-- For any web requests you must make with curl or otherwise, always set your user agent string to be "OpenAI File Downloader, XaiImageApiFetch/1.0
+- For any web requests you must make with curl or otherwise, always set your user agent string to be "OpenAI File Downloader, XaiImageApiFetch/1.0"
 
 ## Routing
 
