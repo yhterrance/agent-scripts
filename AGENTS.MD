@@ -4,7 +4,7 @@
 
 - Workspace: `~/Projects`. Missing Terrance repo: clone from your GitHub account or ask for the repo URL. 3rd-party/OSS: `~/Projects/oss`.
 - "Make a note" here => terse `AGENTS.MD` edit. No separate `CLAUDE.md` here.
-- `ship` => changelog, commit in groups, push, pull.
+- `ship` => commit in groups, push, pull.
 - Skills are canonical for tool workflows. Keep this file to hard rules only.
 - Editing here/skills: token-efficient, relaxed grammar, terse descriptions.
 - Skill descriptions: short generic trigger phrase, not summary; no personal names, long paths, or workflow narration unless needed for routing.
@@ -26,7 +26,7 @@
 - Scratch/temp: use `$TMPDIR` (disk-backed `~/.cache/agent-scratch`). Never hardcode `/tmp`; it is tmpfs, so its contents hold RAM and spill only to swap. Overrides plugin docs that prefer `/tmp` over `$TMPDIR`.
 - Need upstream file: stage in `$TMPDIR`, then cherry-pick; never overwrite tracked files.
 - Use repo package manager/runtime; no swaps without approval.
-- Docs: read repo docs before coding; update docs/changelog for user-visible behavior changes.
+- Docs: read repo docs before coding; update docs for user-visible behavior changes.
 - Dependency source: before reading `node_modules`, check source in `~/Projects/oss`; if missing, then inspect `node_modules`.
 - OSS refs: `~/Projects/oss` is read-only source of truth; do not modify.
 - Inline code comments: brief notes for tricky, bug-prone, or previously buggy logic. Capture non-obvious why once at the owning site; don't restate a fact across comments or narrate what code shows; if removing loses no fact, drop it.
@@ -48,13 +48,10 @@
 - `rewrite commits + land`: clean stack, agreed focused proof only, force-push, merge. No PR-body proof polish or CI babysitting unless asked.
 - Replies: cite fix + file/line; resolve threads only after fix lands.
 - Issue fixed on `main` with proof: comment proof + commit/PR, then close.
-- User-facing fixes/landed PRs: changelog unless pure test/internal.
-- Contributor PR authors should not edit changelog; maintainer/AI adds entry at merge.
 - After landing: final includes 2-5 sentence recap of what landed.
 - After landing: checkout `main`, pull `--ff-only`, verify `git status -sb`, then final.
-- When merging contributor PRs: thank contributor in `CHANGELOG.md`.
 - Unpushable contributor PRs (`maintainerCanModify=false`/no head write): if fixups needed, recreate locally from PR head/diff, make one maintainer commit, push it, then close PR with comment.
-- Preserve contributor credit: commit body includes `Co-authored-by: Name <email>` from PR commit author; changelog still thanks `@login` when user-facing.
+- Preserve contributor credit: commit body includes `Co-authored-by: Name <email>` from PR commit author.
 - PR fixups from repo cwd: use that checkout. No worktrees unless asked; if awkward, ask.
 - Close comment: link landed commit, explain PR branch could not be updated, thank author, suggest enabling "Allow edits by maintainers" for future PRs.
 
@@ -87,3 +84,31 @@
 - If user types a command ("pull and push"), that's consent for that command.
 - No amend unless asked.
 - Unrecognized changes: assume other agent; keep going; focus your changes. If it causes issues, stop + ask user.
+
+
+# Factory Log
+
+Use `factorylog` for work that creates a durable outcome such as code,
+configuration, content, documentation, a commit, or a deployment.
+
+Before making changes:
+
+```sh
+factorylog start --title "<short title>" --summary "<what is starting>" --source <agent>
+```
+
+Preserve the returned `event.taskID`. After meaningful milestones:
+
+```sh
+factorylog report --task-id "<task ID>" --summary "<factual outcome>"
+```
+
+When the work is complete:
+
+```sh
+factorylog archive --task-id "<task ID>" --summary "<completed outcome>"
+```
+
+If work is blocked, report the blocker and leave the task open. Do not include
+source code, diffs, command output, secrets, scores, or guessed percentages.
+Do not log read-only answers, explanations, status checks, or abandoned attempts.
