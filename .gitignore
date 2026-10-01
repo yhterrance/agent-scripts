@@ -23,5 +23,8 @@ skills/tldraw-offline/
 # Owned and rewritten by the treg installer.
 skills/treg/
 
+# Third-party skill, installed to try out.
+skills/archify/
+
 # Trash left by skill deletes.
 skills/.trash/
