@@ -328,8 +328,8 @@ fi
 
 sep=$(printf '%s%s%s' "$sep_col" "$sep_glyph" "$reset")
 
-printf '%s%s%s%s%s%s%s' \
-  "$model_seg" "$sep" \
-  "$ctx_seg" "$sep" "$fivehr_seg" "$sep" "$wk_seg"
+printf '%s' "$model_seg"
 [ -n "$branch_seg" ] && printf '%s%s' "$sep" "$branch_seg"
+printf '%s%s%s%s%s%s' \
+  "$sep" "$ctx_seg" "$sep" "$fivehr_seg" "$sep" "$wk_seg"
 exit 0
