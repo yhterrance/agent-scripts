@@ -3,7 +3,7 @@
 ## Core
 
 - Workspace: `~/Projects`. Missing Terrance repo: clone from your GitHub account or ask for the repo URL. 3rd-party/OSS: `~/Projects/oss`.
-- "Make a note" here => terse `AGENTS.MD` edit. No separate `CLAUDE.md` here.
+- "Make a note" here => terse `AGENTS.MD` edit.
 - `ship` => commit in groups, push, pull.
 - Skills are canonical for tool workflows. Keep this file to hard rules only.
 - Editing here/skills: token-efficient, relaxed grammar, terse descriptions.
@@ -84,31 +84,3 @@
 - If user types a command ("pull and push"), that's consent for that command.
 - No amend unless asked.
 - Unrecognized changes: assume other agent; keep going; focus your changes. If it causes issues, stop + ask user.
-
-
-# Factory Log
-
-Use `factorylog` for work that creates a durable outcome such as code,
-configuration, content, documentation, a commit, or a deployment.
-
-Before making changes:
-
-```sh
-factorylog start --title "<short title>" --summary "<what is starting>" --source <agent>
-```
-
-Preserve the returned `event.taskID`. After meaningful milestones:
-
-```sh
-factorylog report --task-id "<task ID>" --summary "<factual outcome>"
-```
-
-When the work is complete:
-
-```sh
-factorylog archive --task-id "<task ID>" --summary "<completed outcome>"
-```
-
-If work is blocked, report the blocker and leave the task open. Do not include
-source code, diffs, command output, secrets, scores, or guessed percentages.
-Do not log read-only answers, explanations, status checks, or abandoned attempts.
