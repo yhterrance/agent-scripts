@@ -4,8 +4,10 @@ Canonical config lives here; machines consume it via symlinks. `settings.json` i
 
 ## 1. Prerequisites
 
-- `git`, `python3` (statusline installer), `bun` (TS helpers: `browser-tools.ts`, `docs-list.ts`)
+- `git`, `python3` (statusline installer), `ruby` (skill validation), `jq` (statusline), `bun` (TS helpers)
 - Claude Code and/or Codex CLI
+
+Check the installed tools first. Codex alone is sufficient; Claude Code is optional. Install only missing prerequisites. Use an existing directory on `PATH` for binaries; do not change `PATH` or shell startup files.
 
 ## 2. Clone
 
@@ -19,14 +21,20 @@ Everything below assumes the repo is at `~/Projects/agent-scripts`.
 
 Agent instructions (`AGENTS.MD`) and skills:
 
+Check all destination paths before running these commands. Keep a link that already points here. If a destination is a file, directory, or different link, keep its contents and resolve the conflict first. Do not force replacement or create a nested `skills` link.
+
 ```sh
-mkdir -p ~/.claude ~/.codex
-ln -sf ~/Projects/agent-scripts/AGENTS.MD ~/.claude/CLAUDE.md
-ln -sf ~/Projects/agent-scripts/AGENTS.MD ~/.claude/AGENTS.md
-ln -sf ~/Projects/agent-scripts/AGENTS.MD ~/.codex/AGENTS.md
-ln -sf ~/Projects/agent-scripts/skills    ~/.claude/skills
-ln -sf ~/Projects/agent-scripts/skills    ~/.codex/skills
+mkdir -p ~/.claude ~/.codex ~/.agents
+ln -s ~/Projects/agent-scripts/AGENTS.MD ~/.claude/CLAUDE.md
+ln -s ~/Projects/agent-scripts/AGENTS.MD ~/.claude/AGENTS.md
+ln -s ~/Projects/agent-scripts/AGENTS.MD ~/.codex/AGENTS.md
+ln -s ~/Projects/agent-scripts/skills    ~/.claude/skills
+ln -s ~/Projects/agent-scripts/skills    ~/.agents/skills
 ```
+
+Codex reads shared user skills from `~/.agents/skills`. Use one directory link, not one link per skill. Keep `~/.codex/skills/.system` unchanged.
+
+See [Codex skill discovery](https://developers.openai.com/codex/skills/#where-to-save-skills).
 
 ## 4. Statusline
 
@@ -34,12 +42,33 @@ ln -sf ~/Projects/agent-scripts/skills    ~/.codex/skills
 scripts/install-statusline.sh   # symlinks ~/.claude/statusline.sh + wires settings.json. Idempotent.
 ```
 
-## 5. Commit hooks (skill validation)
+## 5. Local commit helper
+
+Use `scripts/committer` from this repo. Do not install a global command or change `PATH`.
+
+```sh
+scripts/committer "commit message" path/to/file
+```
+
+## 6. Commit hooks (skill validation)
 
 ```sh
 git config core.hooksPath hooks   # runs scripts/validate-skills on pre-commit
 ```
 
-## 6. settings.json
+## 7. settings.json
 
 Not tracked here (per-machine: hooks, permissions, statusLine). Step 4 patches it in place. If migrating a machine, copy the old `~/.claude/settings.json` over manually and re-run `install-statusline.sh` to confirm the entries survived.
+
+Keep existing permissions and hooks. Do not copy another machine's settings unless a migration is required. Statusline configuration does not install Claude Code.
+
+## 8. Verify
+
+```sh
+command -v git python3 ruby jq bun
+hooks/pre-commit
+bun scripts/docs-list.ts
+printf '%s' '{"model":{"display_name":"Setup check"},"context_window":{"used_percentage":42}}' | ~/.claude/statusline.sh
+```
+
+The hook must validate the shared skills. The statusline must show `Setup check` and `42%` without errors. Restart the agent to load the shared instructions and skills. The Claude statusline appears when Claude Code is installed and restarted.

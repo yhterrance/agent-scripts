@@ -29,7 +29,7 @@ Rules:
 - Quote `description` in front matter.
 
 Global discovery usually points here:
-- `~/.codex/skills -> ~/Projects/agent-scripts/skills`
+- `~/.agents/skills -> ~/Projects/agent-scripts/skills` (Codex user skills)
 - `~/.claude/skills -> ~/Projects/agent-scripts/skills`
 
 Shared skills live as real folders in `skills/`. Repo-owned skills stay canonical in their repo and are exposed here with a pointer `SKILL.md` that tells the agent to read the repo copy first; local notes in the pointer override it. For example, `skills/slacrawl/SKILL.md` points to:
