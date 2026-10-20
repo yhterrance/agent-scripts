@@ -25,6 +25,7 @@ skills/treg/
 
 # Third-party skill, installed to try out.
 skills/archify/
+skills/reverse-engineer-anything/
 
 # Trash left by skill deletes.
 skills/.trash/
