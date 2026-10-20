@@ -80,7 +80,6 @@ Keep existing permissions and hooks. Do not copy another machine's settings unle
 command -v git python3 uv ruby jq bun
 uv run --no-project --isolated --python 3.13 python -c 'import sys; print(sys.version)'
 hooks/pre-commit
-bun scripts/docs-list.ts
 printf '%s' '{"model":{"display_name":"Setup check"},"context_window":{"used_percentage":42}}' | ~/.claude/statusline.sh
 ```
 

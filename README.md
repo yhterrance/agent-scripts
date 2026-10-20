@@ -7,7 +7,7 @@ Setting up a fresh machine? See [`SETUP.md`](SETUP.md).
 This repo is the canonical place for:
 - `AGENTS.MD`: shared hard rules for Codex/Claude-style agents
 - `skills/`: reusable workflow skills, including pointers to repo-owned skills
-- `scripts/`: dependency-light helpers used across projects
+- [`scripts/`](scripts/): dependency-light helpers used across projects
 - `hooks/`: local guardrails such as skill validation
 
 ## Skills
@@ -28,26 +28,11 @@ Rules:
 - Validate after edits: `scripts/validate-skills`.
 - Quote `description` in front matter.
 
-Global discovery usually points here:
-- `~/.agents/skills -> ~/Projects/agent-scripts/skills` (Codex user skills)
-- `~/.claude/skills -> ~/Projects/agent-scripts/skills`
-
-Shared skills live as real folders in `skills/`. Repo-owned skills stay canonical in their repo and are exposed here with a pointer `SKILL.md` that tells the agent to read the repo copy first; local notes in the pointer override it. For example, `skills/slacrawl/SKILL.md` points to:
-
-```text
-~/Projects/slacrawl/.agents/skills/slacrawl/SKILL.md
-```
-
-Current pointer skills: `slacrawl`.
+Shared skills live in `skills/`; repo-owned skills stay in their source repo and use a pointer `SKILL.md` here, with local notes taking precedence.
 
 ## Agent Instructions
 
 Shared hard rules live in `AGENTS.MD`.
-
-Global setup:
-- `~/.codex/AGENTS.md -> ~/Projects/agent-scripts/AGENTS.MD`
-- `~/.claude/CLAUDE.md -> ~/Projects/agent-scripts/AGENTS.MD`
-- `~/.claude/AGENTS.md -> ~/Projects/agent-scripts/AGENTS.MD`
 
 Downstream repos should use a pointer-style `AGENTS.MD`:
 
@@ -56,38 +41,3 @@ READ ~/Projects/agent-scripts/AGENTS.MD BEFORE ANYTHING (skip if missing).
 ```
 
 Repo-specific rules go below that pointer. Do not copy the shared blocks into downstream repos.
-
-## Helpers
-
-`scripts/committer`
-- Stages exactly the listed files.
-- Enforces a non-empty commit message.
-- Runs skill validation before committing.
-
-`scripts/validate-skills`
-- Checks every `skills/*/SKILL.md`.
-- Verifies YAML front matter plus required `name` and `description`.
-- Enable as a local hook with `git config core.hooksPath hooks`.
-
-`scripts/docs-list.ts`
-- Walks `docs/`.
-- Enforces `summary` and `read_when` front matter.
-- Prints onboarding summaries for repos that wire it in.
-
-`scripts/browser-tools.ts`
-- Standalone Chrome DevTools helper.
-- Common commands: `start --profile`, `nav <url>`, `eval '<js>'`, `screenshot`, `search --content "<query>"`, `content <url>`, `inspect`, `kill --all --force`.
-- Build optional binary with `bun build scripts/browser-tools.ts --compile --target bun --outfile bin/browser-tools`.
-
-## Syncing
-
-Treat this repo as canonical for shared agent rules and portable helper scripts.
-
-When syncing downstream repos:
-- Pull latest here first.
-- Ensure each target repo starts with the pointer-style `AGENTS.MD`.
-- Preserve repo-local rules below the pointer.
-- Copy helper changes both directions only when the helper is meant to stay byte-identical.
-- Keep scripts dependency-free and portable; no repo-specific imports or path aliases.
-
-For submodules, repeat the pointer check inside each subrepo, push those changes, then bump submodule SHAs in the parent repo.
