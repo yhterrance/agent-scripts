@@ -4,10 +4,22 @@ Canonical config lives here; machines consume it via symlinks. `settings.json` i
 
 ## 1. Prerequisites
 
-- `git`, `python3` (statusline installer), `ruby` (skill validation), `jq` (statusline), `bun` (TS helpers)
+- `git`, `python3` (statusline installer), `uv` (standalone Python), `ruby` (skill validation), `jq` (statusline), `bun` (TS helpers)
 - Claude Code and/or Codex CLI
 
 Check the installed tools first. Codex alone is sufficient; Claude Code is optional. Install only missing prerequisites. Use an existing directory on `PATH` for binaries; do not change `PATH` or shell startup files.
+
+### Standalone Python
+
+Install missing `uv` using its [official installation guide](https://docs.astral.sh/uv/getting-started/installation/), into an existing directory on the agent process's `PATH`. Then install the managed runtime:
+
+```sh
+uv python install 3.13
+```
+
+No manual virtualenv activation or global package installs. Ad hoc scripts use `uv run --no-project --isolated --python 3.13`; add `--with PACKAGE` for dependencies. uv manages isolated environments and caches packages. Retained scripts declare Python/dependencies with PEP 723 inline metadata and run with `uv run --script`. Repo work keeps the repo's runtime/package manager.
+
+An embedded Python tool does not inherit this interpreter selection; use shell `uv run` when that tool cannot select the required environment. Restart agents after installation so their processes see the executable.
 
 ## 2. Clone
 
@@ -65,7 +77,8 @@ Keep existing permissions and hooks. Do not copy another machine's settings unle
 ## 8. Verify
 
 ```sh
-command -v git python3 ruby jq bun
+command -v git python3 uv ruby jq bun
+uv run --no-project --isolated --python 3.13 python -c 'import sys; print(sys.version)'
 hooks/pre-commit
 bun scripts/docs-list.ts
 printf '%s' '{"model":{"display_name":"Setup check"},"context_window":{"used_percentage":42}}' | ~/.claude/statusline.sh

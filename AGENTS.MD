@@ -26,6 +26,8 @@
 - Scratch/temp: use `$TMPDIR` (disk-backed `~/.cache/agent-scratch`). Never hardcode `/tmp`; it is tmpfs, so its contents hold RAM and spill only to swap. Overrides plugin docs that prefer `/tmp` over `$TMPDIR`.
 - Need upstream file: stage in `$TMPDIR`, then cherry-pick; never overwrite tracked files.
 - Use repo package manager/runtime; no swaps without approval.
+- Standalone Python: shell `uv run --no-project --isolated --python 3.13 [--with PACKAGE] python ...`, including when embedded tools lack dependencies. No system/user-site package installs; missing `uv` → `SETUP.md`.
+- Retained scripts: PEP 723 Python/dependency metadata; `uv run --script`. Pin/lock for repeatability.
 - Docs: read repo docs before coding; update docs for user-visible behavior changes.
 - Dependency source: before reading `node_modules`, check source in `~/Projects/oss`; if missing, then inspect `node_modules`.
 - OSS refs: `~/Projects/oss` is read-only source of truth; do not modify.
